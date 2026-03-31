@@ -1,0 +1,321 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        
+            <script>function neighbourhoodHighlight(params) {
+  // console.log("in nieghbourhoodhighlight");
+  allNodes = nodes.get({ returnType: "Object" });
+  // originalNodes = JSON.parse(JSON.stringify(allNodes));
+  // if something is selected:
+  if (params.nodes.length > 0) {
+    highlightActive = true;
+    var i, j;
+    var selectedNode = params.nodes[0];
+    var degrees = 2;
+
+    // mark all nodes as hard to read.
+    for (let nodeId in allNodes) {
+      // nodeColors[nodeId] = allNodes[nodeId].color;
+      allNodes[nodeId].color = "rgba(200,200,200,0.5)";
+      if (allNodes[nodeId].hiddenLabel === undefined) {
+        allNodes[nodeId].hiddenLabel = allNodes[nodeId].label;
+        allNodes[nodeId].label = undefined;
+      }
+    }
+    var connectedNodes = network.getConnectedNodes(selectedNode);
+    var allConnectedNodes = [];
+
+    // get the second degree nodes
+    for (i = 1; i < degrees; i++) {
+      for (j = 0; j < connectedNodes.length; j++) {
+        allConnectedNodes = allConnectedNodes.concat(
+          network.getConnectedNodes(connectedNodes[j])
+        );
+      }
+    }
+
+    // all second degree nodes get a different color and their label back
+    for (i = 0; i < allConnectedNodes.length; i++) {
+      // allNodes[allConnectedNodes[i]].color = "pink";
+      allNodes[allConnectedNodes[i]].color = "rgba(150,150,150,0.75)";
+      if (allNodes[allConnectedNodes[i]].hiddenLabel !== undefined) {
+        allNodes[allConnectedNodes[i]].label =
+          allNodes[allConnectedNodes[i]].hiddenLabel;
+        allNodes[allConnectedNodes[i]].hiddenLabel = undefined;
+      }
+    }
+
+    // all first degree nodes get their own color and their label back
+    for (i = 0; i < connectedNodes.length; i++) {
+      // allNodes[connectedNodes[i]].color = undefined;
+      allNodes[connectedNodes[i]].color = nodeColors[connectedNodes[i]];
+      if (allNodes[connectedNodes[i]].hiddenLabel !== undefined) {
+        allNodes[connectedNodes[i]].label =
+          allNodes[connectedNodes[i]].hiddenLabel;
+        allNodes[connectedNodes[i]].hiddenLabel = undefined;
+      }
+    }
+
+    // the main node gets its own color and its label back.
+    // allNodes[selectedNode].color = undefined;
+    allNodes[selectedNode].color = nodeColors[selectedNode];
+    if (allNodes[selectedNode].hiddenLabel !== undefined) {
+      allNodes[selectedNode].label = allNodes[selectedNode].hiddenLabel;
+      allNodes[selectedNode].hiddenLabel = undefined;
+    }
+  } else if (highlightActive === true) {
+    // console.log("highlightActive was true");
+    // reset all nodes
+    for (let nodeId in allNodes) {
+      // allNodes[nodeId].color = "purple";
+      allNodes[nodeId].color = nodeColors[nodeId];
+      // delete allNodes[nodeId].color;
+      if (allNodes[nodeId].hiddenLabel !== undefined) {
+        allNodes[nodeId].label = allNodes[nodeId].hiddenLabel;
+        allNodes[nodeId].hiddenLabel = undefined;
+      }
+    }
+    highlightActive = false;
+  }
+
+  // transform the object into an array
+  var updateArray = [];
+  if (params.nodes.length > 0) {
+    for (let nodeId in allNodes) {
+      if (allNodes.hasOwnProperty(nodeId)) {
+        // console.log(allNodes[nodeId]);
+        updateArray.push(allNodes[nodeId]);
+      }
+    }
+    nodes.update(updateArray);
+  } else {
+    // console.log("Nothing was selected");
+    for (let nodeId in allNodes) {
+      if (allNodes.hasOwnProperty(nodeId)) {
+        // console.log(allNodes[nodeId]);
+        // allNodes[nodeId].color = {};
+        updateArray.push(allNodes[nodeId]);
+      }
+    }
+    nodes.update(updateArray);
+  }
+}
+
+function filterHighlight(params) {
+  allNodes = nodes.get({ returnType: "Object" });
+  // if something is selected:
+  if (params.nodes.length > 0) {
+    filterActive = true;
+    let selectedNodes = params.nodes;
+
+    // hiding all nodes and saving the label
+    for (let nodeId in allNodes) {
+      allNodes[nodeId].hidden = true;
+      if (allNodes[nodeId].savedLabel === undefined) {
+        allNodes[nodeId].savedLabel = allNodes[nodeId].label;
+        allNodes[nodeId].label = undefined;
+      }
+    }
+
+    for (let i=0; i < selectedNodes.length; i++) {
+      allNodes[selectedNodes[i]].hidden = false;
+      if (allNodes[selectedNodes[i]].savedLabel !== undefined) {
+        allNodes[selectedNodes[i]].label = allNodes[selectedNodes[i]].savedLabel;
+        allNodes[selectedNodes[i]].savedLabel = undefined;
+      }
+    }
+
+  } else if (filterActive === true) {
+    // reset all nodes
+    for (let nodeId in allNodes) {
+      allNodes[nodeId].hidden = false;
+      if (allNodes[nodeId].savedLabel !== undefined) {
+        allNodes[nodeId].label = allNodes[nodeId].savedLabel;
+        allNodes[nodeId].savedLabel = undefined;
+      }
+    }
+    filterActive = false;
+  }
+
+  // transform the object into an array
+  var updateArray = [];
+  if (params.nodes.length > 0) {
+    for (let nodeId in allNodes) {
+      if (allNodes.hasOwnProperty(nodeId)) {
+        updateArray.push(allNodes[nodeId]);
+      }
+    }
+    nodes.update(updateArray);
+  } else {
+    for (let nodeId in allNodes) {
+      if (allNodes.hasOwnProperty(nodeId)) {
+        updateArray.push(allNodes[nodeId]);
+      }
+    }
+    nodes.update(updateArray);
+  }
+}
+
+function selectNode(nodes) {
+  network.selectNodes(nodes);
+  neighbourhoodHighlight({ nodes: nodes });
+  return nodes;
+}
+
+function selectNodes(nodes) {
+  network.selectNodes(nodes);
+  filterHighlight({nodes: nodes});
+  return nodes;
+}
+
+function highlightFilter(filter) {
+  let selectedNodes = []
+  let selectedProp = filter['property']
+  if (filter['item'] === 'node') {
+    let allNodes = nodes.get({ returnType: "Object" });
+    for (let nodeId in allNodes) {
+      if (allNodes[nodeId][selectedProp] && filter['value'].includes((allNodes[nodeId][selectedProp]).toString())) {
+        selectedNodes.push(nodeId)
+      }
+    }
+  }
+  else if (filter['item'] === 'edge'){
+    let allEdges = edges.get({returnType: 'object'});
+    // check if the selected property exists for selected edge and select the nodes connected to the edge
+    for (let edge in allEdges) {
+      if (allEdges[edge][selectedProp] && filter['value'].includes((allEdges[edge][selectedProp]).toString())) {
+        selectedNodes.push(allEdges[edge]['from'])
+        selectedNodes.push(allEdges[edge]['to'])
+      }
+    }
+  }
+  selectNodes(selectedNodes)
+}</script>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/dist/vis-network.min.css" integrity="sha512-WgxfT5LWjfszlPHXRmBWHkV2eceiWTOBvrKCNbdgDYTHrT2AeLCGbF4sZlZw3UMN3WtL0tGUoIAKsu8mllg/XA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/vis-network.min.js" integrity="sha512-LnvoEWDFrqGHlHmDD2101OrLcbsfkrzoSpvtSQtxK3RMnRV0eOkhhBN2dXHKRrUU8p2DGRTk35n4O8nWSVe1mQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+            
+            
+            
+            
+            
+            
+
+        
+<center>
+<h1></h1>
+</center>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+        <link
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
+          crossorigin="anonymous"
+        />
+        <script
+          src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+          crossorigin="anonymous"
+        ></script>
+
+
+        <center>
+          <h1></h1>
+        </center>
+        <style type="text/css">
+
+             #mynetwork {
+                 width: 100%;
+                 height: 750px;
+                 background-color: #ffffff;
+                 border: 1px solid lightgray;
+                 position: relative;
+                 float: left;
+             }
+
+             
+
+             
+
+             
+        </style>
+    </head>
+
+
+    <body>
+        <div class="card" style="width: 100%">
+            
+            
+            <div id="mynetwork" class="card-body"></div>
+        </div>
+
+        
+        
+
+        <script type="text/javascript">
+
+              // initialize global variables.
+              var edges;
+              var nodes;
+              var allNodes;
+              var allEdges;
+              var nodeColors;
+              var originalNodes;
+              var network;
+              var container;
+              var options, data;
+              var filter = {
+                  item : '',
+                  property : '',
+                  value : []
+              };
+
+              
+
+              
+
+              // This method is responsible for drawing the graph, returns the drawn network
+              function drawGraph() {
+                  var container = document.getElementById('mynetwork');
+
+                  
+
+                  // parsing and collecting nodes and edges from the python
+                  nodes = new vis.DataSet([{"color": "#97c2fc", "id": "BOULDER VIEW FIRE", "label": "BOULDER VIEW FIRE", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "NORTHWEST OF SCOTTSDALE", "label": "NORTHWEST OF SCOTTSDALE", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "HUMAN CAUSED", "label": "HUMAN CAUSED", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "STATUS_JULY4", "label": "STATUS_JULY4", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "BOULDER HEIGHTS COMMUNITY, LONE MOUNTAIN PARKWAY, AND CAVE CREEK ROAD", "label": "BOULDER HEIGHTS COMMUNITY, LONE MOUNTAIN PARKWAY, AND CAVE CREEK ROAD", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "NORTHEAST SCOTTSDALE", "label": "NORTHEAST SCOTTSDALE", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "TONTO NATIONAL FOREST EDGE", "label": "TONTO NATIONAL FOREST EDGE", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "MC DOWELL SONORAN PRESERVE NORTH PART", "label": "MC DOWELL SONORAN PRESERVE NORTH PART", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "STATUS_JULY1_1100AM", "label": "STATUS_JULY1_1100AM", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "STATUS_JUNE29_0000AM", "label": "STATUS_JUNE29_0000AM", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "STATUS_JUNE28_0800AM", "label": "STATUS_JUNE28_0800AM", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "JULY 4, 2024", "label": "JULY 4, 2024", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "3711 ACRES", "label": "3711 ACRES", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "95% CONTAINED", "label": "95% CONTAINED", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "MULTIPLE HAND CREWS AND ENGINES DEPLOYED", "label": "MULTIPLE HAND CREWS AND ENGINES DEPLOYED", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "ARIZONA DEPARTMENT OF FORESTRY AND FIRE MANAGEMENT AND TONTO NATIONAL FOREST WILDFIRE TEAMS", "label": "ARIZONA DEPARTMENT OF FORESTRY AND FIRE MANAGEMENT AND TONTO NATIONAL FOREST WILDFIRE TEAMS", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "ABOUT 60 HOMES EVACUATED", "label": "ABOUT 60 HOMES EVACUATED", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "EVACUATION ORDERS FOR 136TH STREET TO BOX BAR ROAD AND RIO VERDE ROAD TO DOVE VALLEY", "label": "EVACUATION ORDERS FOR 136TH STREET TO BOX BAR ROAD AND RIO VERDE ROAD TO DOVE VALLEY", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "EVACUATION ORDERS LIFTED ON SATURDAY AFTERNOON", "label": "EVACUATION ORDERS LIFTED ON SATURDAY AFTERNOON", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "RETURN TO READY STATUS NEAR FIRE AS OF SUNDAY", "label": "RETURN TO READY STATUS NEAR FIRE AS OF SUNDAY", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "ANIMAL EVACUATION SHELTERS AT CAVE CREEK MEMORIAL ARENA, REIGNING GRACE RANCH, AND CAVE CREEK OUTFITTERS", "label": "ANIMAL EVACUATION SHELTERS AT CAVE CREEK MEMORIAL ARENA, REIGNING GRACE RANCH, AND CAVE CREEK OUTFITTERS", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "COMMUNITY UNEASE DUE TO WIND SHIFTING AND FIRE MOVEMENT", "label": "COMMUNITY UNEASE DUE TO WIND SHIFTING AND FIRE MOVEMENT", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "FAITH IN FIREFIGHTERS WITH SOME APPREHENSION", "label": "FAITH IN FIREFIGHTERS WITH SOME APPREHENSION", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "JULY 1, 11:00 AM", "label": "JULY 1, 11:00 AM", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "ABOUT ABOUT ABOUT ABOUT ABOUT ABOUT 60 HOMES EVACUATED", "label": "ABOUT ABOUT ABOUT ABOUT ABOUT ABOUT 60 HOMES EVACUATED", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "63% CONTAINED", "label": "63% CONTAINED", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "NEARLY 270 FIREFIGHTERS", "label": "NEARLY 270 FIREFIGHTERS", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "JUNE 29, 12:00 AM", "label": "JUNE 29, 12:00 AM", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "4000 ACRES", "label": "4000 ACRES", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "ZERO PERCENT CONTAINED", "label": "ZERO PERCENT CONTAINED", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "JUNE 28, 8:00 AM", "label": "JUNE 28, 8:00 AM", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "3200 ACRES", "label": "3200 ACRES", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "60 PEOPLE EVACUATED", "label": "60 PEOPLE EVACUATED", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "NEARLY 200 FIREFIGHTERS AND AIR TANKERS", "label": "NEARLY 200 FIREFIGHTERS AND AIR TANKERS", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "GUSTY WINDS AND TRIPLE-DIGIT HEAT", "label": "GUSTY WINDS AND TRIPLE-DIGIT HEAT", "shape": "dot", "size": 10}]);
+                  edges = new vis.DataSet([{"arrows": "to", "from": "BOULDER VIEW FIRE", "label": "located_at", "relationship": "located_at", "to": "NORTHWEST OF SCOTTSDALE", "width": 1}, {"arrows": "to", "from": "BOULDER VIEW FIRE", "label": "caused_by", "relationship": "caused_by", "to": "HUMAN CAUSED", "width": 1}, {"arrows": "to", "from": "BOULDER VIEW FIRE", "label": "has_status", "relationship": "has_status", "to": "STATUS_JULY4", "width": 1}, {"arrows": "to", "from": "BOULDER VIEW FIRE", "label": "located_at", "relationship": "located_at", "to": "BOULDER HEIGHTS COMMUNITY, LONE MOUNTAIN PARKWAY, AND CAVE CREEK ROAD", "width": 1}, {"arrows": "to", "from": "BOULDER VIEW FIRE", "label": "located_at", "relationship": "located_at", "to": "NORTHEAST SCOTTSDALE", "width": 1}, {"arrows": "to", "from": "BOULDER VIEW FIRE", "label": "located_at", "relationship": "located_at", "to": "TONTO NATIONAL FOREST EDGE", "width": 1}, {"arrows": "to", "from": "BOULDER VIEW FIRE", "label": "located_at", "relationship": "located_at", "to": "MC DOWELL SONORAN PRESERVE NORTH PART", "width": 1}, {"arrows": "to", "from": "BOULDER VIEW FIRE", "label": "has_status", "relationship": "has_status", "to": "STATUS_JULY1_1100AM", "width": 1}, {"arrows": "to", "from": "BOULDER VIEW FIRE", "label": "has_status", "relationship": "has_status", "to": "STATUS_JUNE29_0000AM", "width": 1}, {"arrows": "to", "from": "BOULDER VIEW FIRE", "label": "has_status", "relationship": "has_status", "to": "STATUS_JUNE28_0800AM", "width": 1}, {"arrows": "to", "from": "STATUS_JULY4", "label": "has_time_stamp", "relationship": "has_time_stamp", "to": "JULY 4, 2024", "width": 1}, {"arrows": "to", "from": "STATUS_JULY4", "label": "has_burned_area", "relationship": "has_burned_area", "to": "3711 ACRES", "width": 1}, {"arrows": "to", "from": "STATUS_JULY4", "label": "has_containment_status", "relationship": "has_containment_status", "to": "95% CONTAINED", "width": 1}, {"arrows": "to", "from": "STATUS_JULY4", "label": "has_emergency_response", "relationship": "has_emergency_response", "to": "MULTIPLE HAND CREWS AND ENGINES DEPLOYED", "width": 1}, {"arrows": "to", "from": "STATUS_JULY4", "label": "has_emergency_response", "relationship": "has_emergency_response", "to": "ARIZONA DEPARTMENT OF FORESTRY AND FIRE MANAGEMENT AND TONTO NATIONAL FOREST WILDFIRE TEAMS", "width": 1}, {"arrows": "to", "from": "STATUS_JULY4", "label": "has_evacuation_detail", "relationship": "has_evacuation_detail", "to": "ABOUT 60 HOMES EVACUATED", "width": 1}, {"arrows": "to", "from": "STATUS_JULY4", "label": "has_evacuation_detail", "relationship": "has_evacuation_detail", "to": "EVACUATION ORDERS FOR 136TH STREET TO BOX BAR ROAD AND RIO VERDE ROAD TO DOVE VALLEY", "width": 1}, {"arrows": "to", "from": "STATUS_JULY4", "label": "has_evacuation_detail", "relationship": "has_evacuation_detail", "to": "EVACUATION ORDERS LIFTED ON SATURDAY AFTERNOON", "width": 1}, {"arrows": "to", "from": "STATUS_JULY4", "label": "has_evacuation_detail", "relationship": "has_evacuation_detail", "to": "RETURN TO READY STATUS NEAR FIRE AS OF SUNDAY", "width": 1}, {"arrows": "to", "from": "STATUS_JULY4", "label": "has_emergency_response", "relationship": "has_emergency_response", "to": "ANIMAL EVACUATION SHELTERS AT CAVE CREEK MEMORIAL ARENA, REIGNING GRACE RANCH, AND CAVE CREEK OUTFITTERS", "width": 1}, {"arrows": "to", "from": "STATUS_JULY4", "label": "has_public_sentiment", "relationship": "has_public_sentiment", "to": "COMMUNITY UNEASE DUE TO WIND SHIFTING AND FIRE MOVEMENT", "width": 1}, {"arrows": "to", "from": "STATUS_JULY4", "label": "has_public_sentiment", "relationship": "has_public_sentiment", "to": "FAITH IN FIREFIGHTERS WITH SOME APPREHENSION", "width": 1}, {"arrows": "to", "from": "STATUS_JULY1_1100AM", "label": "has_time_stamp", "relationship": "has_time_stamp", "to": "JULY 1, 11:00 AM", "width": 1}, {"arrows": "to", "from": "STATUS_JULY1_1100AM", "label": "has_burned_area", "relationship": "has_burned_area", "to": "3711 ACRES", "width": 1}, {"arrows": "to", "from": "STATUS_JULY1_1100AM", "label": "has_evacuation_detail", "relationship": "has_evacuation_detail", "to": "ABOUT ABOUT ABOUT ABOUT ABOUT ABOUT 60 HOMES EVACUATED", "width": 1}, {"arrows": "to", "from": "STATUS_JULY1_1100AM", "label": "has_containment_status", "relationship": "has_containment_status", "to": "63% CONTAINED", "width": 1}, {"arrows": "to", "from": "STATUS_JULY1_1100AM", "label": "has_emergency_response", "relationship": "has_emergency_response", "to": "NEARLY 270 FIREFIGHTERS", "width": 1}, {"arrows": "to", "from": "STATUS_JUNE29_0000AM", "label": "has_time_stamp", "relationship": "has_time_stamp", "to": "JUNE 29, 12:00 AM", "width": 1}, {"arrows": "to", "from": "STATUS_JUNE29_0000AM", "label": "has_burned_area", "relationship": "has_burned_area", "to": "4000 ACRES", "width": 1}, {"arrows": "to", "from": "STATUS_JUNE29_0000AM", "label": "has_containment_status", "relationship": "has_containment_status", "to": "ZERO PERCENT CONTAINED", "width": 1}, {"arrows": "to", "from": "STATUS_JUNE29_0000AM", "label": "has_evacuation_detail", "relationship": "has_evacuation_detail", "to": "ABOUT ABOUT ABOUT ABOUT ABOUT ABOUT 60 HOMES EVACUATED", "width": 1}, {"arrows": "to", "from": "STATUS_JUNE28_0800AM", "label": "has_time_stamp", "relationship": "has_time_stamp", "to": "JUNE 28, 8:00 AM", "width": 1}, {"arrows": "to", "from": "STATUS_JUNE28_0800AM", "label": "has_burned_area", "relationship": "has_burned_area", "to": "3200 ACRES", "width": 1}, {"arrows": "to", "from": "STATUS_JUNE28_0800AM", "label": "has_containment_status", "relationship": "has_containment_status", "to": "ZERO PERCENT CONTAINED", "width": 1}, {"arrows": "to", "from": "STATUS_JUNE28_0800AM", "label": "has_evacuation_detail", "relationship": "has_evacuation_detail", "to": "60 PEOPLE EVACUATED", "width": 1}, {"arrows": "to", "from": "STATUS_JUNE28_0800AM", "label": "has_emergency_response", "relationship": "has_emergency_response", "to": "NEARLY 200 FIREFIGHTERS AND AIR TANKERS", "width": 1}, {"arrows": "to", "from": "STATUS_JUNE28_0800AM", "label": "has_public_sentiment", "relationship": "has_public_sentiment", "to": "GUSTY WINDS AND TRIPLE-DIGIT HEAT", "width": 1}]);
+
+                  nodeColors = {};
+                  allNodes = nodes.get({ returnType: "Object" });
+                  for (nodeId in allNodes) {
+                    nodeColors[nodeId] = allNodes[nodeId].color;
+                  }
+                  allEdges = edges.get({ returnType: "Object" });
+                  // adding nodes and edges to the graph
+                  data = {nodes: nodes, edges: edges};
+
+                  var options = {"edges": {"font": {"size": 16, "align": "top"}, "smooth": {"type": "dynamic"}}, "physics": {"forceAtlas2Based": {"springLength": 200, "gravitationalConstant": -100}, "solver": "forceAtlas2Based"}};
+
+                  
+
+
+                  
+
+                  network = new vis.Network(container, data, options);
+
+                  
+
+                  
+
+                  
+
+
+                  
+
+                  return network;
+
+              }
+              drawGraph();
+        </script>
+    </body>
+</html>

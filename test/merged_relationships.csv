@@ -1,0 +1,39 @@
+,source,target,relationship,relationship_description
+0,BOULDER VIEW FIRE,NORTHWEST OF SCOTTSDALE,located_at,"The fire burned primarily northwest of Scottsdale, defining its geographic origin and affected area"
+1,BOULDER VIEW FIRE,BOULDER HEIGHTS COMMUNITY,located_at,The fire affected the Boulder Heights residential community near key roads
+2,BOULDER VIEW FIRE,EAST OF DESERT MOUNTAIN GOLF CLUB,located_at,The fire location is described relative to local landmarks for situational awareness
+3,BOULDER VIEW FIRE,HUMAN_CAUSE,caused_by,The fire was reported to have a human-related ignition cause
+4,BOULDER VIEW FIRE,STATUS_JULY4,has_status,July 4 status update captures containment and acreage details
+5,STATUS_JULY4,JULY 4,has_time_stamp,The status is linked to the July 4 report time
+6,STATUS_JULY4,3711 ACRES,has_burned_area,Acreage burned as reported in the July 4 update
+7,STATUS_JULY4,95% CONTAINED,has_containment_status,Containment percentage as of July 4
+8,STATUS_JULY4,CENTRAL_WEST_ZONE_T3_INCIDENT_MANAGEMENT,has_emergency_response,Incident management team involved as reported in the latest status
+9,STATUS_JULY4,HAND_CREWS_AND_ENGINES,has_emergency_response,Additional resources dispatched as part of emergency response
+10,STATUS_JULY4,ARIZONA_DEPARTMENT_OF_FORESTRY_AND_FIRE_MANAGEMENT_AND_TONTO_NATIONAL_FOREST_WILDLIFE_TEAMS,has_emergency_response,Major firefighting agencies engaged in the fire response
+11,STATUS_JULY4,EVACUATION_FROM_136TH_STREET_TO_BOX_BAR_ROAD_AND_RIO_VERDE_TO_DOVE_VALLEY,has_evacuation_detail,Area and timeframe of mandatory evacuation orders issued Friday and lifted Saturday
+12,STATUS_JULY4,60 HOMES_EVACUATED,has_evacuation_detail,Number of homes evacuated during fire emergency operations
+13,STATUS_JULY4,COMMUNITY_CONCERN_AND_VIGILANCE,has_public_sentiment,Describes community reaction including concerns and preparedness during fire events
+1,BOULDER VIEW FIRE,NEAR TONTO NATIONAL FOREST,located_at,Fire began on the edge of Tonto National Forest near north Scottsdale
+3,BOULDER VIEW FIRE,CAREFREE,located_at,Fire is a few miles east of Carefree but moving away from it
+5,BOULDER VIEW FIRE,STATUS_JUNE27_1155_AM,has_status,Includes early report of fire conditions and response on June 27 morning
+6,STATUS_JUNE27_1155_AM,"JUNE 27, 11:55 AM MST",has_time_stamp,Time marker for first detailed update
+7,STATUS_JUNE27_1155_AM,3200 ACRES,has_burned_area,Area burned as reported in early update
+8,STATUS_JUNE27_1155_AM,ZERO PERCENT CONTAINED_JUNE27,has_containment_status,No containment achieved at this early stage
+9,STATUS_JUNE27_1155_AM,60 HOMES_EVACUATED,has_evacuation_detail,Evacuations of around 60 homes ordered early in fire
+10,STATUS_JUNE27_1155_AM,NEARLY 200 FIREFIGHTERS,has_emergency_response,Firefighting personnel on scene early in fire
+11,STATUS_JUNE27_1155_AM,RED CROSS EVACUATION CENTERS,has_emergency_response,Facilities to support displaced residents and animals
+12,STATUS_JUNE27_1155_AM,GUSTY WINDS AND HIGH HEAT,has_public_sentiment,Environmental conditions affecting fire behavior and public mood
+13,BOULDER VIEW FIRE,STATUS_JUNE29_0000,has_status,Updated status showing fire growth and containment status on June 29
+14,STATUS_JUNE29_0000,"JUNE 29, EARLY MORNING",has_time_stamp,Time marker for June 29 update
+15,STATUS_JUNE29_0000,4000 ACRES,has_burned_area,Reported increase in fire size
+16,STATUS_JUNE29_0000,ZERO PERCENT CONTAINED_JUNE29,has_containment_status,Fire remained uncontained in this update
+17,STATUS_JUNE29_0000,IMPROVING EVACUATIONS,has_evacuation_detail,Evacuation conditions improving with some residents preparing to return
+18,BOULDER VIEW FIRE,STATUS_JULY1_MORNING,has_status,Latest update reporting significant containment progress and lifted evacuations on July 1
+19,STATUS_JULY1_MORNING,"JULY 1, MORNING",has_time_stamp,Time marker for July 1 morning update
+20,STATUS_JULY1_MORNING,3711 ACRES,has_burned_area,Acreage burned as reported in early July update
+21,STATUS_JULY1_MORNING,63 PERCENT CONTAINED,has_containment_status,Containment percentage increased to 63%
+22,STATUS_JULY1_MORNING,EVACUATIONS LIFTED,has_evacuation_detail,Evacuation orders lifted for some residents as situation improves
+23,STATUS_JULY1_MORNING,TWO EVACUATION LEVELS GO TO SET,has_evacuation_detail,Evacuation levels reduced for residents returning home
+24,STATUS_JULY1_MORNING,SCOTTSDALE OFFICIALS CLOSURE OF MCDOWELL SONORAN PRESERVE,has_emergency_response,Precautionary closure of preserve trails due to fire proximity
+25,STATUS_JULY1_MORNING,270 FIREFIGHTERS_JULY1,has_emergency_response,Firefighting personnel actively combating blaze under severe heat conditions
+26,STATUS_JULY1_MORNING,COMMUNITY RELIEF,has_public_sentiment,Improving public sentiment following containment and lifting of evacuation orders

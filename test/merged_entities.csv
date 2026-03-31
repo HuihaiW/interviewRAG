@@ -1,0 +1,77 @@
+,entity_name,entity_type,entity_description
+0,BOULDER VIEW FIRE,FIRE_EVENT,"A large wildfire event first ignited on June 27 near Scottsdale, Arizona, burning a total of 3,711 acres and reported 95% contained by July 4)
+"
+1,NORTHWEST OF SCOTTSDALE,FIRE_LOCATION,"The geographic area where the Boulder View Fire burned thousands of acres)
+"
+2,BOULDER HEIGHTS COMMUNITY,FIRE_LOCATION,"Residential area near Lone Mountain Parkway and Cave Creek Road, affected by the fire)
+"
+3,EAST OF DESERT MOUNTAIN GOLF CLUB,FIRE_LOCATION,"Specific location descriptor near the fire perimeter)
+"
+4,HUMAN_CAUSE,FIRE_CAUSE,"The reported ignition source of the Boulder View Fire attributed to human activity without further details)
+"
+5,STATUS_JULY4,STATUS,"[July 4] The fire is 95% contained with no recent growth in acreage reported)
+"
+6,JULY 4,TIME_STAMP,"Chronological marker for the containment status reported on July 4)
+"
+7,3711 ACRES,BURNED_AREA,"Total area burned by the fire as of the latest update)
+"
+8,95% CONTAINED,CONTAINMENT_STATUS,"Percentage of fire perimeter secured as of July 4)
+"
+9,EVACUATION_FROM_136TH_STREET_TO_BOX_BAR_ROAD_AND_RIO_VERDE_TO_DOVE_VALLEY,EVACUATION_DETAIL,"Mandatory evacuation area ordered on Friday affecting nearby residents, lifted on Saturday afternoon)
+"
+10,60 HOMES_EVACUATED,EVACUATION_DETAIL,"The number of homes evacuated during the fire emergency)
+"
+11,CENTRAL_WEST_ZONE_T3_INCIDENT_MANAGEMENT,EMERGENCY_RESPONSE,"Incident management team actively deployed to manage fire suppression around July 4)
+"
+12,HAND_CREWS_AND_ENGINES,EMERGENCY_RESPONSE,"Additional firefighting resources mobilized on Friday to contain the fire)
+"
+13,ARIZONA_DEPARTMENT_OF_FORESTRY_AND_FIRE_MANAGEMENT_AND_TONTO_NATIONAL_FOREST_WILDLIFE_TEAMS,EMERGENCY_RESPONSE,"Firefighting agencies engaged in active response and containment efforts)
+"
+14,COMMUNITY_CONCERN_AND_VIGILANCE,PUBLIC_SENTIMENT,"Local residents expressed concern and cooperation during evacuation and firefighting efforts)
+"
+0,NEAR TONTO NATIONAL FOREST,FIRE_LOCATION,"Area on the edge of which the Boulder View Fire started, about 5 miles outside northern Scottsdale)
+"
+1,CAREFREE,FIRE_LOCATION,"A community located about four miles west of the fire, not impacted as fire moved away)
+"
+2,STATUS_JUNE27_1155_AM,STATUS,"[June 27, 11:55 AM MST] Early report describing fire progression, evacuation orders, and firefighting response)
+"
+3,"JUNE 27, 11:55 AM MST",TIME_STAMP,"Timestamp marking the initial update describing fire conditions and actions)
+"
+4,3200 ACRES,BURNED_AREA,"The estimated acreage burned as of June 27 morning report)
+"
+5,ZERO PERCENT CONTAINED_JUNE27,CONTAINMENT_STATUS,"No containment achieved as of June 27 morning update)
+"
+6,NEARLY 200 FIREFIGHTERS,EMERGENCY_RESPONSE,"Number of firefighters engaged in firefighting efforts around June 27)
+"
+7,RED CROSS EVACUATION CENTERS,EMERGENCY_RESPONSE,"Evacuation facilities established by Red Cross for displaced residents and animals)
+"
+8,GUSTY WINDS AND HIGH HEAT,PUBLIC_SENTIMENT,"Descriptive environmental conditions contributing to fire intensity and community concern)
+"
+9,STATUS_JUNE29_0000,STATUS,"[June 29, Early morning] Update describing fire growth and containment status, evacuation trends)
+"
+10,"JUNE 29, EARLY MORNING",TIME_STAMP,"Timestamp marking June 29 update)
+"
+11,4000 ACRES,BURNED_AREA,"Increased burned area reported by early June 29 update)
+"
+12,ZERO PERCENT CONTAINED_JUNE29,CONTAINMENT_STATUS,"Fire still uncontained as of June 29 update)
+"
+13,IMPROVING EVACUATIONS,EVACUATION_DETAIL,"Evacuation status improving with some residents preparing to return)
+"
+14,270 FIREFIGHTERS_JULY1,EMERGENCY_RESPONSE,"Nearly 270 firefighters battling the blaze under triple-digit heat conditions on July 1)
+"
+15,STATUS_JULY1_MORNING,STATUS,"[July 1, Morning] Fire reported as 63% contained, area burned nearly 3,711 acres, evacuations lifted)
+"
+16,"JULY 1, MORNING",TIME_STAMP,"Timestamp marking latest fire status update)
+"
+17,3711 ACRES,BURNED_AREA,"Total acres burned reported in morning status on July 1)
+"
+18,63 PERCENT CONTAINED,CONTAINMENT_STATUS,"Fire containment percentage as of July 1 morning update)
+"
+19,EVACUATIONS LIFTED,EVACUATION_DETAIL,"Evacuation orders lifted for some residents northeast of Scottsdale on July 1)
+"
+20,TWO EVACUATION LEVELS GO TO SET,EVACUATION_DETAIL,"Evacuation levels lowered from ""GO"" to ""SET"" for some residents on July 1)
+"
+21,SCOTTSDALE OFFICIALS CLOSURE OF MCDOWELL SONORAN PRESERVE,EMERGENCY_RESPONSE,"Precautionary closure of part of preserve trails due to fire proximity)
+"
+22,COMMUNITY RELIEF,PUBLIC_SENTIMENT,"Community response characterized by lifted evacuation orders and improving outlook)
+"

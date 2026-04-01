@@ -1,0 +1,75 @@
+,entity_name,entity_type,entity_description
+0,BOULDER VIEW FIRE,FIRE_EVENT,"A wildfire event first sparked on June 27, 2024, northwest of Scottsdale that burned 3,711 acres and was 95% contained by July 4, 2024)
+"
+1,NORTHWEST OF SCOTTSDALE,FIRE_LOCATION,"Geographical area where the Boulder View Fire originated and burned thousands of acres)
+"
+2,HUMAN CAUSED,FIRE_CAUSE,"The suspected ignition source attributed to the Boulder View Fire, though no further details released)
+"
+3,STATUS_JULY4,STATUS,"[July 4, 2024] Update reporting 95% containment, no recent growth in acreage, and ongoing firefighting efforts)
+"
+4,"JULY 4, 2024",TIME_STAMP,"Timestamp marking the current status update on fire containment and progress)
+"
+5,3711 ACRES,BURNED_AREA,"Total acreage burned by the fire as of July 4, 2024, with no growth reported in recent days)
+"
+6,95% CONTAINED,CONTAINMENT_STATUS,"The reported containment percentage of the fire perimeter as of July 4, 2024)
+"
+7,EVACUATION ORDERS FOR 136TH STREET TO BOX BAR ROAD AND RIO VERDE ROAD TO DOVE VALLEY,EVACUATION_DETAIL,"Evacuation orders issued on Friday for residences in this area due to the fire’s proximity)
+"
+8,EVACUATION ORDERS LIFTED ON SATURDAY AFTERNOON,EVACUATION_DETAIL,"The lifting of previous evacuation orders allowing residents to return to their homes)
+"
+9,RETURN TO READY STATUS NEAR FIRE AS OF SUNDAY,EVACUATION_DETAIL,"Maricopa County's declaration lifting “SET” statuses allowing residents to return as fire crews advanced)
+"
+10,ABOUT 60 HOMES EVACUATED,EVACUATION_DETAIL,"Scale of homes evacuated during fire emergency as reported by officials)
+"
+11,MULTIPLE HAND CREWS AND ENGINES DEPLOYED,EMERGENCY_RESPONSE,"Additional firefighting personnel and equipment sent Friday to battle the fire)
+"
+12,ARIZONA DEPARTMENT OF FORESTRY AND FIRE MANAGEMENT AND TONTO NATIONAL FOREST WILDFIRE TEAMS,EMERGENCY_RESPONSE,"Agencies actively engaged in firefighting and management efforts on the Boulder View Fire)
+"
+13,"ANIMAL EVACUATION SHELTERS AT CAVE CREEK MEMORIAL ARENA, REIGNING GRACE RANCH, AND CAVE CREEK OUTFITTERS",EMERGENCY_RESPONSE,"Support facilities established for evacuated pets and large animals affected by the fire)
+"
+14,COMMUNITY UNEASE DUE TO WIND SHIFTING AND FIRE MOVEMENT,PUBLIC_SENTIMENT,"Residents reporting anxiousness and concern about unpredictable fire behavior)
+"
+15,FAITH IN FIREFIGHTERS WITH SOME APPREHENSION,PUBLIC_SENTIMENT,"Community members expressing trust and hope in firefighting success despite stress)
+"
+16,"BOULDER HEIGHTS COMMUNITY, LONE MOUNTAIN PARKWAY, AND CAVE CREEK ROAD",FIRE_LOCATION,"Fire affected areas near these communities and roadways east of Desert Mountain Golf Club)
+"
+0,NORTHEAST SCOTTSDALE,FIRE_LOCATION,"Geographic area impacted by the Boulder View Fire where evacuation orders were issued and later lifted)
+"
+1,BOULDER HEIGHTS SUBDIVISION,FIRE_LOCATION,"Residential neighborhood on the edge of the Boulder View Fire perimeter, with about 60 homes evacuated)
+"
+2,TONTO NATIONAL FOREST EDGE,FIRE_LOCATION,"The forest boundary area approximately 5 miles from northern Scottsdale where the fire began)
+"
+3,MC DOWELL SONORAN PRESERVE NORTH PART,FIRE_LOCATION,"Closed natural preserve area in north Scottsdale as a precaution without immediate threat)
+"
+4,STATUS_JULY1_1100AM,STATUS,"[July 1, 2024, 11:00 AM] Fire is 63% contained after burning nearly 3,711 acres; evacuations lifted for parts of northeast Scottsdale; 60 homes evacuated previously; no reported injuries or damaged structures)
+"
+5,"JULY 1, 11:00 AM",TIME_STAMP,"Timestamp of the containment and evacuation status update on the Boulder View Fire)
+"
+6,3711 ACRES,BURNED_AREA,"Land area charred by the fire as of July 1 morning report)
+"
+7,63% CONTAINED,CONTAINMENT_STATUS,"Percentage of fire perimeter controlled on July 1, 2024, morning update)
+"
+8,NEARLY 270 FIREFIGHTERS,EMERGENCY_RESPONSE,"Firefighting personnel deployed battling the fire amid triple-digit heat on July 1)
+"
+9,STATUS_JUNE29_0000AM,STATUS,"[June 29, 2024, 12:00 AM] Fire estimated at about 4,000 acres with zero percent containment; evacuations remained in place; fire activity slowing down; human-caused suspected)
+"
+10,"JUNE 29, 12:00 AM",TIME_STAMP,"Timestamp for status update indicating fire size, containment progress, and evacuation status)
+"
+11,4000 ACRES,BURNED_AREA,"Estimated fire size at June 29 midnight update)
+"
+12,ZERO PERCENT CONTAINED,CONTAINMENT_STATUS,"Fire perimeter containment status as of June 29 midnight update)
+"
+13,STATUS_JUNE28_0800AM,STATUS,"[June 28, 2024, 8:00 AM] Fire burning at least 3,200 acres, zero percent contained; 60 residents evacuated; fire started less than 5 miles east of Carefree; ongoing evacuations east of 136th Street and north of Dove Valley Road; 200 firefighters on scene with air tankers active; fire driven by gusty winds in extreme heat)
+"
+14,"JUNE 28, 8:00 AM",TIME_STAMP,"Timestamp of initial substantial wildfire report)
+"
+15,3200 ACRES,BURNED_AREA,"Area burned as of June 28 early morning update)
+"
+16,ZERO PERCENT CONTAINED,CONTAINMENT_STATUS,"Containment status at June 28 morning report)
+"
+17,60 PEOPLE EVACUATED,EVACUATION_DETAIL,"Evacuation count reported by Friday morning after orders issued)
+"
+18,NEARLY 200 FIREFIGHTERS AND AIR TANKERS,EMERGENCY_RESPONSE,"Fire suppression resources actively engaged including ground crews and air support during June 28 morning)
+"
+19,GUSTY WINDS AND TRIPLE-DIGIT HEAT,PUBLIC_SENTIMENT,"Environmental conditions worsening fire behavior with ambient community concern)
+"

@@ -1,0 +1,38 @@
+,source,target,relationship,relationship_description
+0,BOULDER VIEW FIRE,NORTHWEST OF SCOTTSDALE,located_at,The fire originated and has been burning in the northwest Scottsdale area
+1,BOULDER VIEW FIRE,HUMAN CAUSED,caused_by,Official statement attributing the fire origin to human causes without further detail
+2,BOULDER VIEW FIRE,STATUS_JULY4,has_status,The July 4 update provides current fire containment and acreage status
+3,STATUS_JULY4,"JULY 4, 2024",has_time_stamp,Status update timestamp indicating date of report
+4,STATUS_JULY4,3711 ACRES,has_burned_area,Burned acreage as reported in the July 4 status
+5,STATUS_JULY4,95% CONTAINED,has_containment_status,Containment progress indicated at 95% in the July 4 update
+6,STATUS_JULY4,MULTIPLE HAND CREWS AND ENGINES DEPLOYED,has_emergency_response,Active firefighting resources reported in update
+7,STATUS_JULY4,ARIZONA DEPARTMENT OF FORESTRY AND FIRE MANAGEMENT AND TONTO NATIONAL FOREST WILDFIRE TEAMS,has_emergency_response,Agencies involved in fire suppression during status period
+8,STATUS_JULY4,ABOUT 60 HOMES EVACUATED,has_evacuation_detail,Number of homes evacuated as reported in the current status
+9,STATUS_JULY4,EVACUATION ORDERS FOR 136TH STREET TO BOX BAR ROAD AND RIO VERDE ROAD TO DOVE VALLEY,has_evacuation_detail,Evacuation zone details reported prior to orders being lifted
+10,STATUS_JULY4,EVACUATION ORDERS LIFTED ON SATURDAY AFTERNOON,has_evacuation_detail,Status update includes lifting of previous evacuation orders
+11,STATUS_JULY4,RETURN TO READY STATUS NEAR FIRE AS OF SUNDAY,has_evacuation_detail,Shift in evacuation zones to lower alert status
+12,STATUS_JULY4,"ANIMAL EVACUATION SHELTERS AT CAVE CREEK MEMORIAL ARENA, REIGNING GRACE RANCH, AND CAVE CREEK OUTFITTERS",has_emergency_response,Support for evacuated animals coordinated as part of emergency response
+13,STATUS_JULY4,COMMUNITY UNEASE DUE TO WIND SHIFTING AND FIRE MOVEMENT,has_public_sentiment,Community’s emotional state and concern due to fire behavior
+14,STATUS_JULY4,FAITH IN FIREFIGHTERS WITH SOME APPREHENSION,has_public_sentiment,Community expressions of trust and anxiety regarding firefighting efforts
+15,BOULDER VIEW FIRE,"BOULDER HEIGHTS COMMUNITY, LONE MOUNTAIN PARKWAY, AND CAVE CREEK ROAD",located_at,Specific neighborhoods and key roads near the fire impact zone
+0,BOULDER VIEW FIRE,NORTHEAST SCOTTSDALE,located_at,The fire is reported primarily affecting the northeast Scottsdale area where evacuations occurred and containment efforts focused
+2,BOULDER VIEW FIRE,TONTO NATIONAL FOREST EDGE,located_at,The fire originated near the Tonto National Forest boundary about 5 miles north of Scottsdale
+3,BOULDER VIEW FIRE,MC DOWELL SONORAN PRESERVE NORTH PART,located_at,Fire-related precautionary closure of northern part of Preserve near impacted areas
+5,BOULDER VIEW FIRE,STATUS_JULY1_1100AM,has_status,July 1 morning update provided key containment and evacuation information
+6,STATUS_JULY1_1100AM,"JULY 1, 11:00 AM",has_time_stamp,Status timestamp for updated containment and acreage data
+7,STATUS_JULY1_1100AM,3711 ACRES,has_burned_area,Burned acreage reported during July 1 morning update
+8,STATUS_JULY1_1100AM,ABOUT ABOUT ABOUT ABOUT ABOUT ABOUT 60 HOMES EVACUATED,has_evacuation_detail,Evacuation count associated with July 1 status update
+9,STATUS_JULY1_1100AM,63% CONTAINED,has_containment_status,Containment percentage reported on July 1 morning
+10,STATUS_JULY1_1100AM,NEARLY 270 FIREFIGHTERS,has_emergency_response,Firefighting personnel deployment noted during this update
+11,BOULDER VIEW FIRE,STATUS_JUNE29_0000AM,has_status,June 29 midnight report on fire's extent and containment status
+12,STATUS_JUNE29_0000AM,"JUNE 29, 12:00 AM",has_time_stamp,Timestamp for midnight June 29 fire status
+13,STATUS_JUNE29_0000AM,4000 ACRES,has_burned_area,Burned area as of June 29 midnight update
+14,STATUS_JUNE29_0000AM,ZERO PERCENT CONTAINED,has_containment_status,Containment status at time of update
+15,STATUS_JUNE29_0000AM,ABOUT ABOUT ABOUT ABOUT ABOUT ABOUT 60 HOMES EVACUATED,has_evacuation_detail,Evacuation status reported in June 29 update
+16,BOULDER VIEW FIRE,STATUS_JUNE28_0800AM,has_status,"Initial report on June 28 with fire size, evacuation, and firefighting effort details"
+17,STATUS_JUNE28_0800AM,"JUNE 28, 8:00 AM",has_time_stamp,Timestamp for early morning initial wildfire update
+18,STATUS_JUNE28_0800AM,3200 ACRES,has_burned_area,Fire spread area reported on June 28 morning
+19,STATUS_JUNE28_0800AM,ZERO PERCENT CONTAINED,has_containment_status,Containment progress at the initial report
+20,STATUS_JUNE28_0800AM,60 PEOPLE EVACUATED,has_evacuation_detail,Evacuation scale recorded in early report
+21,STATUS_JUNE28_0800AM,NEARLY 200 FIREFIGHTERS AND AIR TANKERS,has_emergency_response,Firefighting resources deployed at initial report
+22,STATUS_JUNE28_0800AM,GUSTY WINDS AND TRIPLE-DIGIT HEAT,has_public_sentiment,Environmental conditions increased community concern and worsened fire behavior
